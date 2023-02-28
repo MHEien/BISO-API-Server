@@ -46,7 +46,7 @@ const getTransactions = async (dateStart, dateEnd) => {
               StampNo: transaction['StampNo'] ? transaction['StampNo'][0] : null,
               Period: transaction['Period'][0],
               InvoiceNo: transaction['InvoiceNo'] ? transaction['InvoiceNo'][0] : null,
-              DueDate: transaction['DueDate'] ? transaction['DueDate'][0] : null,
+              DueDate: transaction['DueDate'] ? transaction['DueDate'][0] : '2020-01-01',
               TransactionTypeId: transaction['TransactionTypeId'][0],
               DateChanged: transaction['DateChanged'][0] ? transaction['DateChanged'][0] : null,
               PeriodDate: transaction['PeriodDate'] ? transaction['PeriodDate'][0] : null,
