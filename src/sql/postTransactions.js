@@ -36,7 +36,8 @@ const compareTransactions = async (dateStart, dateEnd) => {
         console.log('Transaction updated');
       }
     } else {
-      db.query(`INSERT INTO transactions (Date, AccountNo, Amount, StampNo, Period, InvoiceNo, DueDate, TransactionTypeId, DateChanged, PeriodDate, Comment, TransactionNo, Id, Open, Campus, Department, CustomerID, Project, Level, Membership) VALUES ('${dateFormatted}', '${transaction.AccountNo}', '${transaction.Amount}', '${transaction.StampNo}', '${transaction.Period}', '${transaction.InvoiceNo}', '${transaction.DueDate}', '${transaction.TransactionTypeId}', '${transaction.DateChanged}', '${transaction.PeriodDate}', '${transaction.Comment}', '${transaction.TransactionNo}', '${transaction.Id}', '${transaction.Open}', '${transaction.Campus}', '${transaction.Department}', '${transaction.Customer}', '${transaction.Project}', '${level.level}', '${transaction.Membership}')`);
+      db.query(`INSERT INTO transactions (Date, AccountNo, Amount, StampNo, Period, InvoiceNo, DueDate, TransactionTypeId, DateChanged, PeriodDate, Comment, TransactionNo, Id, Open, Campus, Department, CustomerID, Project, Level, Membership) 
+      VALUES ('${dateFormatted}', '${transaction.AccountNo}', '${transaction.Amount}', '${transaction.StampNo}', '${transaction.Period}', '${transaction.InvoiceNo}', STR_TO_DATE('${transaction.DueDate}', '%Y-%m-%dT%H:%i:%sZ'), '${transaction.TransactionTypeId}', '${transaction.DateChanged}', '${transaction.PeriodDate}', '${transaction.Comment}', '${transaction.TransactionNo}', '${transaction.Id}', '${transaction.Open}', '${transaction.Campus}', '${transaction.Department}', '${transaction.Customer}', '${transaction.Project}', '${level.level}', '${transaction.Membership}')`);
       console.log('Transaction inserted');
     }
   });

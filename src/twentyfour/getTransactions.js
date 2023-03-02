@@ -46,7 +46,7 @@ const getTransactions = async (dateStart, dateEnd) => {
               StampNo: transaction['StampNo'] ? transaction['StampNo'][0] : null,
               Period: transaction['Period'][0],
               InvoiceNo: transaction['InvoiceNo'] ? transaction['InvoiceNo'][0] : null,
-              DueDate: transaction['DueDate'] ? transaction['DueDate'][0] : null,
+              DueDate: transaction['DueDate'] ? transaction['DueDate'][0] : '2020-01-01',
               TransactionTypeId: transaction['TransactionTypeId'][0],
               DateChanged: transaction['DateChanged'][0] ? transaction['DateChanged'][0] : null,
               PeriodDate: transaction['PeriodDate'] ? transaction['PeriodDate'][0] : null,
@@ -54,10 +54,10 @@ const getTransactions = async (dateStart, dateEnd) => {
               TransactionNo: transaction['TransactionNo'][0],
               Id: transaction['Id'][0],
               Open: transaction['Open'][0],
-              Campus: transaction['Dimensions'][0] ? transaction['Dimensions'][0]['Dimension'].some(dimension => dimension['TypeId'][0] === '101') ? transaction['Dimensions'][0]['Dimension'].filter(dimension => dimension['TypeId'][0] === '101')[0]['Value'][0] : null : null,
+              Campus: transaction['Dimensions'][0] ? transaction['Dimensions'][0]['Dimension'].some(dimension => dimension['TypeId'][0] === '101') ? transaction['Dimensions'][0]['Dimension'].filter(dimension => dimension['TypeId'][0] === '101')[0]['Value'][0] : 0 : 0,
               Department: transaction['Dimensions'][0] ? transaction['Dimensions'][0]['Dimension'].some(dimension => dimension['Type'][0] === 'Department') ? transaction['Dimensions'][0]['Dimension'].filter(dimension => dimension['Type'][0] === 'Department')[0]['Value'][0] : null : null,
               Customer: transaction['Dimensions'][0] ? transaction['Dimensions'][0]['Dimension'].some(dimension => dimension['Type'][0] === 'Customer') ? transaction['Dimensions'][0]['Dimension'].filter(dimension => dimension['Type'][0] === 'Customer')[0]['Value'][0] : null : null,
-              Project: transaction['Dimensions'][0] ? transaction['Dimensions'][0]['Dimension'].some(dimension => dimension['Type'][0] === 'Project') ? transaction['Dimensions'][0]['Dimension'].filter(dimension => dimension['Type'][0] === 'Project')[0]['Value'][0] : null : null,
+              Project: transaction['Dimensions'][0] ? transaction['Dimensions'][0]['Dimension'].some(dimension => dimension['Type'][0] === 'Project') ? transaction['Dimensions'][0]['Dimension'].filter(dimension => dimension['Type'][0] === 'Project')[0]['Value'][0] : 0 : 0,
               Membership: transaction['Dimensions'][0] ? transaction['Dimensions'][0]['Dimension'].some(dimension => dimension['TypeId'][0] === '102') ? transaction['Dimensions'][0]['Dimension'].filter(dimension => dimension['TypeId'][0] === '102')[0]['Value'][0] : null : null
             });
         });
