@@ -19,23 +19,12 @@ const expenseStatus = async (customerName, invoiceNo) => {
     return new Promise((resolve, reject) => {
             db.query(`SELECT * FROM transactions WHERE InvoiceNo = '${invoiceNo}' AND CustomerID = '${customerID}'`, (err, result) => {
                 if (result.length > 0) {
-                    //Check if transaction is open using the table column called Open with a true/false value. If open, return "awaiting", if not found return "not found", if true return "approved"
-                    if (result[0].Open === 'true') {
-                        resolve('Awaiting');
-                    }
-                    if (result[0].Open === 'false') {
-                        resolve('Approved');
-                    }
+                        resolve(result[0].LinkId);
                 } else {
-                    resolve('Not found');
+                        resolve("No");
                 }
             });
-        })
-        .then((result) => {
-            console.log(result)
-            return result;
-        }
-    )
-};
+    });
+}
 
 module.exports = expenseStatus;
